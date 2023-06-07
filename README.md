@@ -19,10 +19,14 @@
 > 前端框架：Vue，Element UI
 >
 > 数据图表：ECharts
+> 
+> 开发工具：IDEA，Webstorm，Navicat
+>
+> 开发环境：JDK1.8，MySQL8，Vue2
 
-开发工具：IDEA，Webstorm，Navicat
 
-开发环境：JDK1.8，MySQL8，Vue2
+
+
 
 **2. 功能需求**
 
