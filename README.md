@@ -39,7 +39,7 @@
 
 流程图：
 
-![](./media/image2.png){width="5.592361111111111in" height="4.75in"}
+![](./media/image2.png)
 
 图2-2-1-2 登录模块流程图
 
@@ -54,57 +54,51 @@
 
 流程图：
 
-![](./media/image4.png){width="5.592361111111111in" height="5.73125in"}
+![](./media/image4.png)
 
 图2-2-2-2 会员管理模块流程图
 
 ### 2.2.3 课程管理模块
 
-![](./media/image5.png){width="4.893055555555556in"
-height="1.961111111111111in"}用例图：
+![](./media/image5.png)
+用例图：
 
 图2-2-3-1 课程管理模块用例图
 
 
 流程图：
 
-![](./media/image6.png){width="5.324305555555555in"
-height="5.842361111111111in"}
+![](./media/image6.png)
 
 图2-2-3-2 课程管理模块流程图
 
 ### 2.2.4 器材管理模块
 
-![](./media/image7.png){width="3.9409722222222223in"
-height="1.867361111111111in"}用例图：
+![](./media/image7.png)
 
 图2-2-4-1 器材管理模块用例图
 
 
 流程图：
 
-![](./media/image8.png){width="5.592361111111111in" height="5.98125in"}
+![](./media/image8.png)
 
 图2-2-4-1 器材管理模块流程图
 
 ### 2.2.5 员工管理模块
 
-![](./media/image9.png){width="4.585416666666666in"
-height="1.9916666666666667in"}用例图：
+![](./media/image9.png)
 
 图2-2-5-1 员工管理模块用例图
 
 
 
-![](./media/image10.png){width="5.602083333333334in"
-height="5.990972222222222in"}
-
+![](./media/image10.png)
 图2-2-5-2 员工管理模块流程图
 
 ### 2.2.6 报名管理模块
 
-![](./media/image11.png){width="3.911111111111111in"
-height="1.6208333333333333in"}用例图：
+![](./media/image11.png)
 
 图2-2-6-1 报名管理模块用例图
 
@@ -112,23 +106,20 @@ height="1.6208333333333333in"}用例图：
 
 流程图：
 
-![](./media/image12.png){width="5.592361111111111in"
-height="5.7131944444444445in"}
+![](./media/image12.png)
 
 图2-2-6-2 报名管理模块流程图
 
 ### 2.2.7在线充值模块
 
-![](./media/image13.png){width="4.683333333333334in"
-height="2.0in"}用例图：
+![](./media/image13.png)
 
 图2-2-7-1 在线充值模块用例图
 
 
 流程图：
 
-![](./media/image14.png){width="5.370138888888889in"
-height="2.870138888888889in"}
+![](./media/image14.png)
 
 图2-2-7-2 在线充值模块流程图
 
@@ -136,8 +127,7 @@ height="2.870138888888889in"}
 
 用例图：
 
-![](./media/image15.png){width="4.528472222222222in"
-height="2.3513888888888888in"}
+![](./media/image15.png)
 
 图2-2-8-1 升级VIP模块用例图
 
@@ -145,28 +135,24 @@ height="2.3513888888888888in"}
 
 流程图：
 
-![](./media/image16.png){width="5.592361111111111in"
-height="3.138888888888889in"}
+![](./media/image16.png)
 
 图2-2-8-2 升级VIP模块流程图
 
 ### 2.2.9我的资料模块
 
-![](./media/image17.png){width="4.701388888888889in"
-height="1.125in"}用例图：
+![](./media/image17.png)
 
 图2-2-9-1 我的资料模块用例图
 
 
-![](./media/image18.png){width="6.898611111111111in"
-height="1.1423611111111112in"}流程图：
+![](./media/image18.png)
 
 图2-2-9-2 我的资料模块流程图
 
 ### 2.2.10购买课程模块
 
-![](./media/image19.png){width="3.7194444444444446in"
-height="1.2201388888888889in"}用例图：
+![](./media/image19.png)
 
 图2-2-10-1 购买课程模块用例图
 
@@ -174,38 +160,33 @@ height="1.2201388888888889in"}用例图：
 
 流程图：
 
-![](./media/image20.png){width="6.0465277777777775in"
-height="1.3888888888888888in"}
+![](./media/image20.png)
 
 图2-2-10-2 购买课程模块流程图
 
 ### 2.2.11充值记录模块
 
-![](./media/image21.png){width="3.3409722222222222in"
-height="1.2145833333333333in"}用例图：
+![](./media/image21.png)
 
 图2-2-11-1 充值记录模块用例图
 
 
 流程图：
 
-![](./media/image22.png){width="5.592361111111111in"
-height="1.4444444444444444in"}
+![](./media/image22.png)
 
 图2-2-11-2 充值记录模块流程图
 
 ### 2.2.12购买记录模块
 
-![](./media/image23.png){width="3.511111111111111in"
-height="1.0520833333333333in"}用例图：
+![](./media/image23.png)
 
 图2-2-12-1 购买记录模块用例图
 
 
 流程图：
 
-![](./media/image24.png){width="5.592361111111111in"
-height="1.4166666666666667in"}
+![](./media/image24.png)
 
 图2-2-12-2 购买记录模块流程图
 
@@ -213,15 +194,13 @@ height="1.4166666666666667in"}
 
 ## 3.1 系统功能结构设计 
 
-![](./media/image25.png){width="6.885416666666667in"
-height="2.8583333333333334in"}
+![](./media/image25.png)
 
 图3-1 系统功能结构图
 
 ## 3.2 系统技术架构设计 
 
-![](./media/image26.png){width="3.772222222222222in"
-height="3.013888888888889in"}
+![](./media/image26.png)
 
 图3-2系统技术架构图
 
@@ -230,8 +209,7 @@ height="3.013888888888889in"}
 
 ## 4.1 数据库 E-R 图
 
-![](./media/image27.png){width="6.305555555555555in"
-height="4.5368055555555555in"}
+![](./media/image27.png)
 
 图4-1 健身房管理系统E-R图
 
@@ -459,8 +437,7 @@ height="4.5368055555555555in"}
 
 登录时序图：
 
-![](./media/image28.png){width="6.305555555555555in"
-height="3.990972222222222in"}
+![](./media/image28.png)
 
 图5-2-1-1用户登录时序图
 
@@ -468,7 +445,7 @@ height="3.990972222222222in"}
 
 **用户登录界面（截图）：**
 
-![](./media/image29.png){width="4.990972222222222in" height="3.23125in"}
+![](./media/image29.png)
 
 图5-2-1-2用户登录截图
 
@@ -476,28 +453,24 @@ height="3.990972222222222in"}
 
 会员管理时序图：
 
-![](./media/image30.png){width="5.51875in" height="6.194444444444445in"}
+![](./media/image30.png)
 
 图5-2-2-1用户管理时序图
 
 用户管理界面（截图）：
 
-![](./media/image31.png){width="5.592361111111111in"
-height="2.814583333333333in"}
+![](./media/image31.png)
 
 图5-2-2-2会员管理截图
 
-![](./media/image32.png){width="5.592361111111111in"
-height="2.8055555555555554in"}
+![](./media/image32.png)
 
 图5-2-2-3会员管理截图
 
-![](./media/image33.png){width="5.592361111111111in"
-height="1.9631944444444445in"}
-
+![](./media/image33.png)
 图5-2-2-4会员管理截图
 
-![](./media/image34.png){width="5.592361111111111in" height="2.73125in"}
+![](./media/image34.png)
 
 图5-2-2-5会员管理截图
 
@@ -505,24 +478,21 @@ height="1.9631944444444445in"}
 
 课程管理时序图：
 
-![](./media/image35.png){width="5.592361111111111in"
-height="5.897916666666666in"}
+![](./media/image35.png)
 
 图5-2-3-1课程管理时序图
 
 课程管理界面（截图）：
 
-![](./media/image36.png){width="5.361111111111111in" height="2.0in"}
+![](./media/image36.png)
 
 图5-2-3-2会员管理截图
 
-![](./media/image37.png){width="5.416666666666667in"
-height="2.361111111111111in"}
+![](./media/image37.png)
 
 图5-2-3-3会员管理截图
 
-![](./media/image38.png){width="5.352083333333334in"
-height="2.564583333333333in"}
+![](./media/image38.png)
 
 图5-2-3-4会员管理截图
 
@@ -530,24 +500,21 @@ height="2.564583333333333in"}
 
 课程管理时序图：
 
-![](./media/image39.png){width="5.592361111111111in"
-height="5.472222222222222in"}
+![](./media/image39.png)
 
 图5-2-4-1器材管理时序图
 
 课程管理界面（截图）：
 
-![](./media/image40.png){width="5.259027777777778in" height="1.98125in"}
+![](./media/image40.png)
 
 图5-2-4-2器材管理截图
 
-![](./media/image41.png){width="5.26875in"
-height="2.1479166666666667in"}
+![](./media/image41.png)
 
 图5-2-4-3器材管理截图
 
-![](./media/image42.png){width="5.472222222222222in"
-height="1.8979166666666667in"}
+![](./media/image42.png)
 
 图5-2-4-4器材管理截图
 
@@ -555,25 +522,20 @@ height="1.8979166666666667in"}
 
 员工管理时序图：
 
-![](./media/image43.png){width="4.897916666666666in"
-height="5.185416666666667in"}
-
+![](./media/image43.png)
 图5-2-5-1员工管理时序图
 
 员工管理界面（截图）：
 
-![](./media/image44.png){width="5.592361111111111in"
-height="2.1020833333333333in"}
+![](./media/image44.png)
 
 图5-2-5-2员工管理截图
 
-![](./media/image45.png){width="5.592361111111111in"
-height="1.9631944444444445in"}
+![](./media/image45.png)
 
 图5-2-5-3员工管理截图
 
-![](./media/image46.png){width="5.592361111111111in"
-height="1.9354166666666666in"}
+![](./media/image46.png)
 
 图5-2-5-4员工管理截图
 
@@ -581,25 +543,21 @@ height="1.9354166666666666in"}
 
 报名表管理时序图：
 
-![](./media/image47.png){width="5.592361111111111in"
-height="4.935416666666667in"}
+![](./media/image47.png)
 
 图5-2-6-1报名表管理时序图
 
 报名表管理界面（截图）：
 
-![](./media/image48.png){width="5.583333333333333in"
-height="2.1479166666666667in"}
+![](./media/image48.png)
 
 图5-2-6-2报名表管理截图
 
-![](./media/image49.png){width="5.592361111111111in"
-height="1.9256944444444444in"}
+![](./media/image49.png)
 
 图5-2-6-3报名表管理截图
 
-![](./media/image50.png){width="5.592361111111111in"
-height="1.9076388888888889in"}
+![](./media/image50.png)
 
 图5-2-6-4报名表管理截图
 
@@ -607,20 +565,17 @@ height="1.9076388888888889in"}
 
 全部课程模块时序图：
 
-![](./media/image51.png){width="5.592361111111111in"
-height="4.897916666666666in"}
+![](./media/image51.png)
 
 图5-2-7-1全部课程模块时序图
 
 全部课程模块界面（截图）：
 
-![](./media/image52.png){width="5.583333333333333in"
-height="2.1756944444444444in"}
+![](./media/image52.png)
 
 图5-2-7-2全部课程模块截图
 
-![](./media/image53.png){width="5.592361111111111in"
-height="2.314583333333333in"}
+![](./media/image53.png)
 
 图5-2-7-3全部课程模块截图
 
@@ -628,20 +583,17 @@ height="2.314583333333333in"}
 
 在线充值模块时序图：
 
-![](./media/image54.png){width="5.592361111111111in"
-height="4.370138888888889in"}
+![](./media/image54.png)
 
 图5-2-8-1在线充值模块时序图
 
 在线充值模块界面（截图）：
 
-![](./media/image55.png){width="5.592361111111111in"
-height="2.759027777777778in"}
+![](./media/image55.png)
 
 图5-2-8-2在线充值模块截图
 
-![](./media/image56.png){width="5.583333333333333in"
-height="2.379861111111111in"}
+![](./media/image56.png)
 
 图5-2-8-3在线充值模块截图
 
@@ -649,46 +601,37 @@ height="2.379861111111111in"}
 
 升级VIP模块时序图：
 
-![](./media/image57.png){width="5.592361111111111in"
-height="3.9256944444444444in"}
-
+![](./media/image57.png)
 图5-2-9-1升级VIP模块时序图
 
 升级VIP模块界面（截图）：
 
-![](./media/image58.png){width="5.592361111111111in"
-height="2.8055555555555554in"}
+![](./media/image58.png)
 
 图5-2-9-2升级VIP模块截图
 
-![](./media/image59.png){width="5.592361111111111in"
-height="2.7131944444444445in"}
-
+![](./media/image59.png)
 图5-2-9-3升级VIP模块截图
 
 ### 5.2.10我的资料模块
 
 我的资料模块时序图：
 
-![](./media/image60.png){width="5.592361111111111in"
-height="3.953472222222222in"}
+![](./media/image60.png)
 
 图5-2-10-1我的资料模块时序图
 
 我的资料界面（截图）：
 
-![](./media/image61.png){width="5.592361111111111in"
-height="2.888888888888889in"}
+![](./media/image61.png)
 
 图5-2-10-2我的资料模块截图
 
-![](./media/image62.png){width="5.583333333333333in"
-height="2.1479166666666667in"}
+![](./media/image62.png)
 
 图5-2-10-3我的资料模块截图
 
-![](./media/image63.png){width="5.592361111111111in"
-height="2.870138888888889in"}
+![](./media/image63.png)
 
 图5-2-10-4我的资料模块截图
 
@@ -696,15 +639,13 @@ height="2.870138888888889in"}
 
 充值记录模块时序图：
 
-![](./media/image64.png){width="5.592361111111111in"
-height="2.9166666666666665in"}
+![](./media/image64.png)
 
 图5-2-11-1充值记录模块时序图
 
 充值记录界面（截图）：
 
-![](./media/image65.png){width="5.592361111111111in"
-height="2.7868055555555555in"}
+![](./media/image65.png)
 
 图5-2-11-2充值记录模块截图
 
@@ -712,15 +653,13 @@ height="2.7868055555555555in"}
 
 购买记录模块时序图：
 
-![](./media/image66.png){width="5.592361111111111in"
-height="2.6479166666666667in"}
+![](./media/image66.png)
 
 图5-2-12-1购买记录模块时序图
 
 购买记录界面（截图）：
 
-![](./media/image67.png){width="4.897916666666666in"
-height="2.509027777777778in"}
+![](./media/image67.png)
 
 图5-2-12-2 购买记录模块截图
 
@@ -732,8 +671,7 @@ height="2.509027777777778in"}
 
 ## 6.2 创新设计/代码优化效果图或效果描述
 
-![](./media/image68.png){width="1.8798611111111112in"
-height="1.6020833333333333in"}
+![](./media/image68.png)
 
 图6-2-1 签到模块
 
