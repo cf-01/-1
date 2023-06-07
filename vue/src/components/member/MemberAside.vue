@@ -41,10 +41,11 @@ export default {
       checkTime:'',
       today:'',
       memberPhone:'',
+      member:{},
     }
   },
   created() {
-    this.admin = JSON.parse(window.localStorage.getItem('access-member'))
+    this.member = JSON.parse(window.localStorage.getItem('access-member'))
     this.checkTime = window.localStorage.getItem('access-checkTime')
   },
   mounted() {
@@ -186,7 +187,7 @@ a {
   font-weight: 400;
 }
 .memberAside-bottom {
-  
+
 }
 .memberAside-bottom ul {
 

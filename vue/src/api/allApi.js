@@ -255,7 +255,7 @@ export const addCourse = params =>{
     return request({
         url:'/addCourse',
         method:'post',
-        params:params
+        data:params
     })
 }
 

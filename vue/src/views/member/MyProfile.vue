@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {getAllMember, getMemberByMemberNo, getMemberIntegral, updateMember, updateMemberByMemberNo} from "@/api/allApi";
+import { getMemberByMemberNo, updateMemberByMemberNo} from "@/api/allApi";
 import moment from "moment";
 
 export default {
@@ -52,13 +52,13 @@ export default {
       memberForm: {
 
       },
-      admin: {
+      member: {
 
       }
     }
   },
   created() {
-    this.admin = JSON.parse(window.localStorage.getItem('access-member'))
+    this.member = JSON.parse(window.localStorage.getItem('access-member'))
   },
   mounted() {
     this.getMemberByMemberNo()
@@ -78,7 +78,7 @@ export default {
         memberHeight: this.memberForm.memberHeight,
         memberWeight: this.memberForm.memberWeight,
         personalizedSignature:this.memberForm.personalizedSignature,
-        memberNo: this.admin.memberNo
+        memberNo: this.member.memberNo
       }).then(res => {
         if (res.data.code === 200) {
           alert(res.data.message)
@@ -90,9 +90,8 @@ export default {
       })
     },
     getMemberByMemberNo() {
-      let _this = this
       getMemberByMemberNo({
-        memberNo: _this.admin.memberNo
+        memberNo: this.member.memberNo
       }).then(res=>{
         this.memberForm = res.data
       }).catch(err=>{

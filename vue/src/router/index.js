@@ -106,7 +106,7 @@ const routes = [
     path: '/memberLayout',
     name: 'MemberLayout',
     component: MemberLayout,
-    redirect:'/memberLayout/myProfile',
+    redirect:'/memberLayout/allCourse',
     children:[
       {
         path:'buyRecord',

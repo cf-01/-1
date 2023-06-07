@@ -8,7 +8,7 @@
       <el-row class="block-col-2">
         <el-dropdown>
           <div class="adminer">
-            <span class="el-dropdown-link">{{admin.memberUsername}}<i class="el-icon-arrow-down el-icon--right"></i></span>
+            <span class="el-dropdown-link">{{member.memberUsername}}<i class="el-icon-arrow-down el-icon--right"></i></span>
           </div>
 
           <el-dropdown-menu slot="dropdown" >
@@ -27,13 +27,13 @@ export default {
   name: "MemberHeader",
   data() {
     return {
-      admin: {
+      member: {
 
       },
     }
   },
   created() {
-    this.admin = JSON.parse(window.localStorage.getItem('access-member'))
+    this.member = JSON.parse(window.localStorage.getItem('access-member'))
   },
   methods:{
     logout() {

@@ -10,8 +10,8 @@
 
         <div class="buttons">
           <el-button type="primary" size="mini" @click="addEquipmentPage">新增</el-button>
-          <el-button type="primary" size="mini">导入</el-button>
-          <el-button type="primary" size="mini">导出</el-button>
+<!--          <el-button type="primary" size="mini">导入</el-button>
+          <el-button type="primary" size="mini">导出</el-button>-->
           <!--搜索区域-->
           <div class="search">
             <el-input placeholder="请输入内容" v-model="KeywordEquipment" class="input-with-select" size="mini">

@@ -23,10 +23,10 @@
             </el-form-item>
             <el-form-item label="职务" prop="region">
               <el-select v-model="sizeForm.employeeJob" placeholder="请选择职务">
-                <el-option label="经理" value="0"></el-option>
                 <el-option label="教练" value="1"></el-option>
-                <el-option label="保洁" value="2"></el-option>
-                <el-option label="前台" value="3"></el-option>
+                <el-option label="经理" value="4"></el-option>
+                <el-option label="前台" value="2"></el-option>
+                <el-option label="保洁" value="3"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="备注">

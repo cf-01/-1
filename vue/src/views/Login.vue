@@ -56,7 +56,7 @@ export default {
     },
   methods: {
     submitForm() {
-      if (this.identity == 2) {
+      if (this.identity === 2) {
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
             let _this = this
@@ -84,9 +84,14 @@ export default {
               memberPhone:memberPhone,
               memberPassword:memberPassword
             }).then(res=>{
-              if (res.data !=null) {
+              if (res.data.code === 200) {
                 window.localStorage.setItem('access-member',JSON.stringify(res.data))
                 _this.$router.replace({path:'/memberLayout'})
+              }else {
+                this.$message({
+                  message: '账号或密码错误',
+                  type: 'error'
+                });
               }
             }).catch(err=>{
               console.log(err.message)

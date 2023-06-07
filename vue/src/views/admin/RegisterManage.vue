@@ -10,8 +10,8 @@
 
         <div class="buttons">
           <el-button type="primary" size="mini" @click="addRegisterPage">新增</el-button>
-          <el-button type="primary" size="mini">导入</el-button>
-          <el-button type="primary" size="mini">导出</el-button>
+<!--          <el-button type="primary" size="mini">导入</el-button>
+          <el-button type="primary" size="mini">导出</el-button>-->
           <!--搜索区域-->
           <div class="search">
             <el-input placeholder="请输入关键字" v-model="KeywordRegister" class="input-with-select" size="mini" clearable @keyup.enter="getByKeyword(KeywordMember)">

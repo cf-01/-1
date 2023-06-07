@@ -10,8 +10,8 @@
 
         <div class="buttons">
           <el-button type="primary" size="mini" @click="addCoursePage">新增</el-button>
-          <el-button type="primary" size="mini">导入</el-button>
-          <el-button type="primary" size="mini">导出</el-button>
+<!--          <el-button type="primary" size="mini">导入</el-button>
+          <el-button type="primary" size="mini">导出</el-button>-->
           <!--搜索区域-->
           <div class="search">
             <el-input placeholder="请输入内容" v-model="KeywordCourse" class="input-with-select" size="mini">
@@ -44,7 +44,11 @@
         </el-table-column>
         <el-table-column
             prop="courseTime"
-            label="开课时间">
+            label="开课时间"
+            width="150">
+          <template slot-scope="scope">
+            <span>{{scope.row.courseTime | dataFormat}}</span>
+          </template>
         </el-table-column>
         <el-table-column
             prop="courseDuration"
@@ -109,7 +113,13 @@
             <el-input v-model="sizeForm.courseName"></el-input>
           </el-form-item>
           <el-form-item label="开课时间">
-            <el-input v-model="sizeForm.courseTime"></el-input>
+            <el-date-picker
+                v-model="sizeForm.courseTime"
+                type="datetime"
+                placeholder="选择日期时间"
+                align="right"
+                :picker-options="pickerOptions">
+            </el-date-picker>
           </el-form-item>
           <el-form-item label="课程时长">
             <el-input v-model="sizeForm.courseDuration"></el-input>
@@ -146,7 +156,13 @@
             <el-input v-model="sizeForm.courseName"></el-input>
           </el-form-item>
           <el-form-item label="开课时间">
-            <el-input v-model="sizeForm.courseTime"></el-input>
+            <el-date-picker
+                v-model="sizeForm.courseTime"
+                type="datetime"
+                placeholder="选择日期时间"
+                align="right"
+                :picker-options="pickerOptions">
+            </el-date-picker>
           </el-form-item>
           <el-form-item label="课程时长">
             <el-input v-model="sizeForm.courseDuration"></el-input>
@@ -204,7 +220,29 @@ export default {
       currentPage: 1,
       total: 0,
       searchValue: '',
-      KeywordCourse: ''
+      KeywordCourse: '',
+      pickerOptions: {
+        shortcuts: [{
+          text: '今天',
+          onClick(picker) {
+            picker.$emit('pick', new Date());
+          }
+        }, {
+          text: '昨天',
+          onClick(picker) {
+            const date = new Date();
+            date.setTime(date.getTime() - 3600 * 1000 * 24);
+            picker.$emit('pick', date);
+          }
+        }, {
+          text: '一周前',
+          onClick(picker) {
+            const date = new Date();
+            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+            picker.$emit('pick', date);
+          }
+        }]
+      },
     }
   },
   computed: {
@@ -214,7 +252,7 @@ export default {
   },
   filters: {
     dataFormat(value) {
-      return moment(value).format("YYYY-MM-DD")
+      return moment(value).format("YYYY-MM-DD HH:mm:ss")
     }
   },
   mounted() {
@@ -275,7 +313,6 @@ export default {
       this.sizeForm = {}
     },
     addCourse() {
-
       let currentPage = this.currentPage
       let pageSize = this.pageSize
       addCourse({

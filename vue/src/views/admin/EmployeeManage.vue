@@ -9,8 +9,8 @@
         </div>
 
         <div class="buttons">
-          <el-button type="primary" size="mini">导入</el-button>
-          <el-button type="primary" size="mini">导出</el-button>
+<!--          <el-button type="primary" size="mini">导入</el-button>
+          <el-button type="primary" size="mini">导出</el-button>-->
           <!--搜索区域-->
           <div class="search">
             <el-input placeholder="请输入内容" v-model="KeywordEmployee" class="input-with-select" size="mini">
@@ -88,7 +88,7 @@
             fixed="right"
             label="操作">
           <template slot-scope="scope">
-            <el-button @click="editMember(scope.row)" type="text" size="mini">编辑</el-button>
+            <el-button @click="editEmployee(scope.row)" type="text" size="mini">编辑</el-button>
             <el-button slot="reference" type="text" size="mini"  @click="deleteEmployee(scope.row.employeeNo)">删除</el-button>
           </template>
         </el-table-column>
@@ -127,10 +127,10 @@
           </el-form-item>
           <el-form-item label="职务" prop="region">
             <el-select v-model="sizeForm.employeeJob" placeholder="请选择职务">
-              <el-option label="1" value="教练"></el-option>
-              <el-option label="0" value="项目经理"></el-option>
-              <el-option label="3" value="前台"></el-option>
-              <el-option label="2" value="保洁"></el-option>
+              <el-option label="教练" value="1"></el-option>
+              <el-option label="经理" value="4"></el-option>
+              <el-option label="前台" value="2"></el-option>
+              <el-option label="保洁" value="3"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="备注信息">
@@ -234,9 +234,9 @@ export default {
           })
           .catch(_ => {});
     },
-    editMember(value) {
+    editEmployee(value) {
       this.sizeForm = value
-      this.sizeForm.memberPassword = ''
+      this.sizeForm.employeeJob = value.employeeJob.toString()
       this.dialogVisible = true
     },
 
