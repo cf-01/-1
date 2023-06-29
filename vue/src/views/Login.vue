@@ -56,7 +56,7 @@ export default {
     },
   methods: {
     submitForm() {
-      if (this.identity === 2) {
+      if (this.identity === "2") {
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
             let _this = this
