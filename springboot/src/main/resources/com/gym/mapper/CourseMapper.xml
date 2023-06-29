@@ -84,10 +84,10 @@
                  INNER JOIN employee a ON course.employeeNo = a.employeeNo
                  INNER JOIN manager ON course.managerNo = manager.managerNo
                  INNER JOIN employee b ON manager.employeeNo = b.employeeNo
-        where course.employeeNo = employee.employeeNo
+        where course.employeeNo = a.employeeNo
           and (courseName like concat('%',#{keyWord},'%')
             or courseDuration like concat('%',#{keyWord},'%')
-            or employeeName like concat('%',#{keyWord},'%'))
+            or a.employeeName like concat('%',#{keyWord},'%'))
         limit #{page},#{size};
     </select>
 
@@ -96,11 +96,10 @@
         select COUNT(*) as dataTotal from course
                                               INNER JOIN employee a ON course.employeeNo = a.employeeNo
                                               INNER JOIN manager ON course.managerNo = manager.managerNo
-                                              INNER JOIN employee b ON manager.employeeNo = b.employeeNo
-        where course.employeeNo = employee.employeeNo
+        where course.employeeNo = a.employeeNo
           and (courseName like concat('%',#{keyWord},'%')
             or courseDuration like concat('%',#{keyWord},'%')
-            or employeeName like concat('%',#{keyWord},'%'))
+            or a.employeeName like concat('%',#{keyWord},'%'))
     </select>
 
     <select id="getAllCourseRegister" resultType="com.gym.entity.Course">

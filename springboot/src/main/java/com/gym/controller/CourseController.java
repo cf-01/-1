@@ -6,6 +6,7 @@ import com.gym.entity.Equipment;
 import com.gym.service.AdminService;
 import com.gym.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,8 @@ public class CourseController {
     }
 
     @RequestMapping(path= "/addCourse")
-    public Map<String,Object> addCourse(Course course){
+    public Map<String,Object> addCourse(@RequestBody Course course){
+        System.out.println(course);
         return courseService.addCourse(course);
     }
 

@@ -42,7 +42,6 @@
             member,
             course ,
             employee
-
         WHERE
             register.memberNo = member.memberNo
           AND course.courseNo = register.courseNo

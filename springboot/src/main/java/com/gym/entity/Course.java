@@ -3,12 +3,13 @@ package com.gym.entity;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class Course {
     private Integer courseNo;
     private String courseName;
-    private LocalDate courseTime;
+    private Date courseTime;
     private String courseDuration;
     private double coursePrice;
     private String courseDesc;

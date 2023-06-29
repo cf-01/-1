@@ -88,28 +88,28 @@ public class MemberController {
     }
 
     @RequestMapping(path = "/getMemberByMemberNo")
-    public Member getMemberByMemberNo(int memberNo) {
+    public Member getMemberByMemberNo(Integer memberNo) {
         return memberService.getMemberByMemberNo(memberNo);
     }
 
     @RequestMapping(path = "/getTotalMoney")
-    public Double getTotalMoney(int memberNo) {
+    public Double getTotalMoney(Integer memberNo) {
         return memberService.getTotalMoney(memberNo);
     }
 
     @RequestMapping(path = "/getMemberPower")
-    public double getMemberPower(int memberNo) {
+    public double getMemberPower(Integer memberNo) {
         return memberService.getMemberPower(memberNo);
     }
 
 
     @RequestMapping(path = "/updateMemberChange")
-    public double updateMemberChange(int memberNo) {
+    public double updateMemberChange(Integer memberNo) {
         return memberService.updateMemberChange(memberNo);
     }
 
     @RequestMapping(path = "/updateMemberIntegral")
-    public double updateMemberIntegral(double price,int memberNo) {
+    public double updateMemberIntegral(Double price,Integer memberNo) {
         return memberService.updateMemberIntegral(price,memberNo);
     }
 
