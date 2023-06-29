@@ -11,7 +11,7 @@
  Target Server Version : 80031 (8.0.31)
  File Encoding         : 65001
 
- Date: 20/06/2023 12:21:46
+ Date: 29/06/2023 10:32:16
 */
 
 SET NAMES utf8mb4;
@@ -44,12 +44,13 @@ CREATE TABLE `checkin`  (
   `checkDate` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`checkNo`) USING BTREE,
   INDEX `memberNo`(`memberNo` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of checkin
 -- ----------------------------
 INSERT INTO `checkin` VALUES (1, 1, '2023-06-20 00:00:00');
+INSERT INTO `checkin` VALUES (2, NULL, '2023-06-29 00:00:00');
 
 -- ----------------------------
 -- Table structure for course
@@ -63,16 +64,17 @@ CREATE TABLE `course`  (
   `coursePrice` decimal(10, 2) NULL DEFAULT NULL,
   `courseDesc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `courseIntegral` int NULL DEFAULT NULL,
-  `employeeNo` int NULL DEFAULT NULL,
-  `managerNo` int NULL DEFAULT NULL,
+  `employeeNo` int NULL DEFAULT NULL COMMENT '教练员工编号',
+  `managerNo` int NULL DEFAULT NULL COMMENT '经理编号',
   PRIMARY KEY (`courseNo`) USING BTREE,
   INDEX `employeeNo`(`employeeNo` ASC) USING BTREE,
   INDEX `managerNo`(`managerNo` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of course
 -- ----------------------------
+INSERT INTO `course` VALUES (1, '11', '2023-06-30 00:00:00', '11', 11.00, '11', 11, 1, 1);
 
 -- ----------------------------
 -- Table structure for employee
@@ -86,32 +88,35 @@ CREATE TABLE `employee`  (
   `employeePhone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `employeeTime` datetime NULL DEFAULT NULL,
   `employeeMessage` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
-  `employeeJob` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `employeeJob` int NULL DEFAULT NULL COMMENT '1 教练 2前台 3保洁 4经理',
   PRIMARY KEY (`employeeNo`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of employee
 -- ----------------------------
-INSERT INTO `employee` VALUES (1, 35, '橙灰', 'M', '18470558697', '2023-06-20 12:18:29', '冠军教练', '项目经理');
+INSERT INTO `employee` VALUES (1, 35, '橙灰', 'M', '15798645769', '2023-06-20 12:18:29', '冠军教练', 1);
+INSERT INTO `employee` VALUES (2, 40, '小黄', 'M', '13568974568', '2023-06-29 09:38:48', '项目经理', 4);
+INSERT INTO `employee` VALUES (3, 24, '小胡', 'F', '13598756985', '2023-06-29 10:09:15', NULL, 2);
 
 -- ----------------------------
 -- Table structure for equipment
 -- ----------------------------
 DROP TABLE IF EXISTS `equipment`;
 CREATE TABLE `equipment`  (
-  `equipmentNo` int NOT NULL,
+  `equipmentNo` int NOT NULL AUTO_INCREMENT,
   `equipmentName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `equipmentLocation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `equipmentState` int NULL DEFAULT NULL,
   `equipmentMessage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `employeeJob` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`equipmentNo`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of equipment
 -- ----------------------------
+INSERT INTO `equipment` VALUES (1, '跑步机', '大厅', 1, '无', NULL);
 
 -- ----------------------------
 -- Table structure for manager
@@ -122,11 +127,12 @@ CREATE TABLE `manager`  (
   `employeeNo` int NULL DEFAULT NULL,
   PRIMARY KEY (`managerNo`) USING BTREE,
   INDEX `employeeNo`(`employeeNo` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of manager
 -- ----------------------------
+INSERT INTO `manager` VALUES (1, 2);
 
 -- ----------------------------
 -- Table structure for member
@@ -150,14 +156,16 @@ CREATE TABLE `member`  (
   `personalizedSignature` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `memberPower` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`memberNo`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`memberNo`) USING BTREE,
+  UNIQUE INDEX `memberPhone`(`memberPhone` ASC) USING BTREE COMMENT '手机号唯一'
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of member
 -- ----------------------------
-INSERT INTO `member` VALUES (1, 'admin', 'admin', 'admin', 18, 'F', '18470558967', '2023-06-20 12:12:01', 175, 60, 200, 150, 51, 500, 'hhh', '1', NULL);
+INSERT INTO `member` VALUES (1, 'admin', 'admin', 'admin', 18, 'F', '18470558967', '2023-06-20 12:12:01', 175, 60, 200, 150, 47, 39, 'hhh', '1', NULL);
 INSERT INTO `member` VALUES (2, '0031023684', '123456', '1', 20, 'M', '18470668957', '2023-06-20 12:16:16', 180, 70, 50, 50, 20, 20, NULL, '2', NULL);
+INSERT INTO `member` VALUES (3, 'admin', '', 'admin', 18, 'F', '18470558961', '2023-06-20 12:12:01', 175, 60, 200, 150, 51, 500, NULL, '1', NULL);
 
 -- ----------------------------
 -- Table structure for recharge
@@ -172,11 +180,12 @@ CREATE TABLE `recharge`  (
   `memberNo` int NULL DEFAULT NULL,
   PRIMARY KEY (`rechargeNo`) USING BTREE,
   INDEX `memberNo`(`memberNo` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of recharge
 -- ----------------------------
+INSERT INTO `recharge` VALUES (1, '2023-06-29 00:00:00', '在线充值', 1, 50, 1);
 
 -- ----------------------------
 -- Table structure for register
@@ -186,18 +195,15 @@ CREATE TABLE `register`  (
   `registerNo` int NOT NULL AUTO_INCREMENT,
   `courseNo` int NULL DEFAULT NULL,
   `memberNo` int NULL DEFAULT NULL,
-  `courseName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `courseTime` datetime NULL DEFAULT NULL,
-  `courseDuration` int NULL DEFAULT NULL,
-  `employeeNo` int NULL DEFAULT NULL,
   PRIMARY KEY (`registerNo`) USING BTREE,
   INDEX `courseNo`(`courseNo` ASC) USING BTREE,
-  INDEX `memberNo`(`memberNo` ASC) USING BTREE,
-  INDEX `employeeNo`(`employeeNo` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  INDEX `memberNo`(`memberNo` ASC) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of register
 -- ----------------------------
+INSERT INTO `register` VALUES (1, 1, 2);
+INSERT INTO `register` VALUES (2, 1, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
