@@ -17,6 +17,9 @@ public class CheckInService {
     @Autowired
     private CheckInMapper checkInMapper;
 
+    @Autowired
+    private MemberMapper memberMapper;
+
     public Map<String,Object> addCheckIn(CheckIn checkIn){
         Map<String,Object> resultMap = new HashMap<>();
 
@@ -32,6 +35,8 @@ public class CheckInService {
             int result =  checkInMapper.addCheckIn(checkIn);
 
             if(result>0){
+                // 添加积分
+                memberMapper.updateMemberIntegral(-1,checkIn.getMemberNo());
                 resultMap.put("code",200);
                 resultMap.put("message","签到成功");
             }else{
