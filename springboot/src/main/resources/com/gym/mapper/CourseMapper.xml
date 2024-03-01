@@ -35,7 +35,9 @@
             courseIntegral,
             coursePrice,
             courseDesc,
+            manager.managerNo managerNo,
             a.employeeName employeeNameCoach,
+            a.employeeNo employeeNo,
             a.employeePhone employeePhoneCoach,
             b.employeeName employeeNameManager,
             b.employeePhone employeePhoneManager
@@ -44,6 +46,7 @@
                 INNER JOIN employee a ON course.employeeNo = a.employeeNo
                 INNER JOIN manager ON course.managerNo = manager.managerNo
                 INNER JOIN employee b ON manager.employeeNo = b.employeeNo
+        order by courseNo
         limit #{page},#{size}
     </select>
 
@@ -56,8 +59,8 @@
     <!--修改会员信息-->
     <update id="updateCourse">
         UPDATE course SET courseName=#{courseName},courseTime=#{courseTime},courseDuration=#{courseDuration},
-                          courseIntegral =#{courseIntegral},coursePrice = #{coursePrice},coursePrice = #{coursePrice}
-                          employeeNo=#{employeeNo}
+                          courseIntegral =#{courseIntegral},coursePrice = #{coursePrice},coursePrice = #{coursePrice},
+                          employeeNo=#{employeeNo},managerNo=#{managerNo}
         WHERE courseNo = #{courseNo}
     </update>
 
@@ -76,7 +79,9 @@
                courseIntegral,
                coursePrice,
                courseDesc,
+               manager.managerNo managerNo,
                a.employeeName employeeNameCoach,
+               a.employeeNo employeeNo,
                a.employeePhone employeePhoneCoach,
                b.employeeName employeeNameManager,
                b.employeePhone employeePhoneManager
@@ -87,6 +92,7 @@
         where course.employeeNo = a.employeeNo
           and (courseName like concat('%',#{keyWord},'%')
             or courseDuration like concat('%',#{keyWord},'%')
+            or courseDesc like concat('%',#{keyWord},'%')
             or a.employeeName like concat('%',#{keyWord},'%'))
         limit #{page},#{size};
     </select>

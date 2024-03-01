@@ -6,42 +6,9 @@
           <el-page-header @back="goBack" content="主页">
           </el-page-header>
         </div>
-
-        <div class="buttons">
-          <el-button type="primary" size="mini" @click="">新增</el-button>
-          <el-button type="primary" size="mini">导入</el-button>
-          <el-button type="primary" size="mini">导出</el-button>
-          <!--搜索区域-->
-          <div class="search">
-            <el-input placeholder="请输入内容" v-model="Keyword" class="input-with-select" size="mini">
-              <el-button slot="append" icon="el-icon-search" size="mini" @click=""></el-button>
-            </el-input>
-          </div>
-        </div>
       </div>
 
       <div class="chart">
-        <div class="chart-top">
-          <div class="top-card">
-
-          </div>
-          <div class="top-card">
-
-          </div>
-          <div class="top-card" style="margin-right: 0">
-
-          </div>
-        </div>
-        <div class="chart-bottom">
-          <div class="chart-bottom-card">
-            <div id="myChart" :style="{width: '500px', height: '400px'}" />
-          </div>
-
-          <div class="chart-bottom-card" style="margin-right: 0">
-
-          </div>
-
-        </div>
 
       </div>
 
@@ -72,12 +39,12 @@ export default {
       // 绘制图表
       myChart.setOption({
         // 标题
-        title: { text: 'Echarts入门示例' },
+        title: { text: '课程销量' },
         // 提示框组件
         tooltip: {},
         // x轴
         xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          data: ['有氧燃脂类', '塑形类', '放松类', '舞蹈类']
         },
         // y轴
         yAxis: {},

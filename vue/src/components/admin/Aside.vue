@@ -7,19 +7,16 @@
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose">
-        <el-submenu index="0">
-          <template slot="title">
-            <i class="el-icon-user-solid"></i>
-            <span>主页</span>
-          </template>
-          <el-menu-item index="1-1" @click="toIndex">主页</el-menu-item>
-        </el-submenu>
+        <el-menu-item index="0" @click="toIndex">
+          <i class="el-icon-monitor"></i>
+          <span slot="title">首页</span>
+        </el-menu-item>
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-user-solid"></i>
             <span>会员管理</span>
           </template>
-          <el-menu-item index="1-1" @click="toMemberManage">查看会员</el-menu-item>
+          <el-menu-item index="1-1" @click="toMemberManage">会员管理</el-menu-item>
           <el-menu-item index="1-2" @click="toAddMembers">新增会员</el-menu-item>
         </el-submenu>
         <el-submenu index="2" >

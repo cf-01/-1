@@ -116,25 +116,36 @@ export default {
         price: this.price,
         memberNo: _this.admin.memberNo,
       }).then(res => {
-        if (this.price == 15) {
-          updateMemberPower({
-            memberPower: 1,
-            memberNo: _this.admin.memberNo
+        if (res.data.code === 200) {
+          this.$message({
+            message: '升级成功',
+            type: 'success'
           })
-        } else if (this.price == 60) {
-          updateMemberPower({
-            memberPower: 2,
-            memberNo: _this.admin.memberNo
-          })
-        } else if (this.price == 120) {
-          updateMemberPower({
-            memberPower: 3,
-            memberNo: _this.admin.memberNo
-          })
-        } else if (this.price == 300) {
-          updateMemberPower({
-            memberPower: 4,
-            memberNo: _this.admin.memberNo
+          if (this.price == 15) {
+            updateMemberPower({
+              memberPower: 1,
+              memberNo: _this.admin.memberNo
+            })
+          } else if (this.price == 60) {
+            updateMemberPower({
+              memberPower: 2,
+              memberNo: _this.admin.memberNo
+            })
+          } else if (this.price == 120) {
+            updateMemberPower({
+              memberPower: 3,
+              memberNo: _this.admin.memberNo
+            })
+          } else if (this.price == 300) {
+            updateMemberPower({
+              memberPower: 4,
+              memberNo: _this.admin.memberNo
+            })
+          }
+        } else {
+          this.$message({
+            message: res.data.message,
+            type: 'error'
           })
         }
       }).catch(err => {

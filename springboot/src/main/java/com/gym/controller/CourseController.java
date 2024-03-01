@@ -30,12 +30,11 @@ public class CourseController {
 
     @RequestMapping(path= "/addCourse")
     public Map<String,Object> addCourse(@RequestBody Course course){
-        System.out.println(course);
         return courseService.addCourse(course);
     }
 
     @RequestMapping(path ="/updateCourse")
-    public Map<String,Object> updateEquipment(Course course){
+    public Map<String,Object> updateEquipment(@RequestBody Course course){
         return courseService.updateCourse(course);
     }
 
@@ -49,6 +48,13 @@ public class CourseController {
         return courseService.totalCourse();
     }
 
+    /**
+     * 模糊搜索接口
+     * @param keyWord 前端传过来的模糊搜索 关键词
+     * @param page 第几页
+     * @param size 一页的大小
+     * @return 返回查到的课程的列表
+     */
     @RequestMapping(path = "/getByKeywordCourse")
     public List<Course> getByKeywordCourse(String keyWord, int page, int size){
         return courseService.getByKeywordCourse(keyWord,page,size);

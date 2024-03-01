@@ -85,23 +85,20 @@ export default {
           rechargeMoney:this.price,
         }).then(res=>{
           if(res.data.code===200){
-            alert(res.data.message)
+            this.$message.success(res.data.message)
             updateMemberChange({
               memberNo:_this.admin.memberNo
             })
             this.getMemberChange()
             this.getTotalMoney()
           }else{
-            alert(res.data.message)
+            this.$message.error(res.data.message)
           }
         }).catch(err=>{
           console.log(err)
         })
-      }
-      else{
-        alert("充值成功")
-        this.getMemberChange()
-        this.getTotalMoney()
+      } else{
+        this.$message.error('请输入正确的金额')
       }
 
     },

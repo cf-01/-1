@@ -24,4 +24,7 @@ public interface EmployeeMapper {
     List<Employee> getByKeywordEmployee(String keyWord,int page,int size);
 
     Common totalEmployeeFuzzy(String keyWord);
+
+    List<Employee> getAllCoach();
+    List<Employee> getAllManager();
 }

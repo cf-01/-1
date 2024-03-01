@@ -124,11 +124,31 @@
           <el-form-item label="课程时长">
             <el-input v-model="sizeForm.courseDuration"></el-input>
           </el-form-item>
-          <el-form-item label="教练">
+          <!-- <el-form-item label="教练">
             <el-input v-model="sizeForm.employeeNo"></el-input>
           </el-form-item>
           <el-form-item label="项目经理">
             <el-input v-model="sizeForm.managerNo"></el-input>
+          </el-form-item> -->
+          <el-form-item label="教练" prop="employeeNo">
+            <el-select v-model="sizeForm.employeeNo" filterable placeholder="请选择">
+              <el-option
+                  v-for="item in coachList"
+                  :key="item.employeeNo"
+                  :label="item.employeeName"
+                  :value="item.employeeNo">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="项目经理" prop="managerNo">
+            <el-select v-model="sizeForm.managerNo" filterable placeholder="请选择">
+              <el-option
+                  v-for="item in managerList"
+                  :key="item.managerNo"
+                  :label="item.employeeName"
+                  :value="item.managerNo">
+              </el-option>
+            </el-select>
           </el-form-item>
           <el-form-item label="价格">
             <el-input v-model="sizeForm.coursePrice"></el-input>
@@ -167,11 +187,25 @@
           <el-form-item label="课程时长">
             <el-input v-model="sizeForm.courseDuration"></el-input>
           </el-form-item>
-          <el-form-item label="教练">
-            <el-input v-model="sizeForm.employeeNo"></el-input>
+          <el-form-item label="教练" prop="employeeNo">
+            <el-select v-model="sizeForm.employeeNo" filterable placeholder="请选择">
+              <el-option
+                  v-for="item in coachList"
+                  :key="item.employeeNo"
+                  :label="item.employeeName"
+                  :value="item.employeeNo">
+              </el-option>
+            </el-select>
           </el-form-item>
-          <el-form-item label="项目经理">
-            <el-input v-model="sizeForm.managerNo"></el-input>
+          <el-form-item label="项目经理" prop="managerNo">
+            <el-select v-model="sizeForm.managerNo" filterable placeholder="请选择">
+              <el-option
+                  v-for="item in managerList"
+                  :key="item.managerNo"
+                  :label="item.employeeName"
+                  :value="item.managerNo">
+              </el-option>
+            </el-select>
           </el-form-item>
           <el-form-item label="价格">
             <el-input v-model="sizeForm.coursePrice"></el-input>
@@ -202,6 +236,8 @@ import {
   getAllCourse,
   getByKeywordCourse,
   totalCourse,
+  getAllManager,
+  getAllCoach,
   totalCourseFuzzy,
   updateCourse
 } from "@/api/allApi";
@@ -213,6 +249,8 @@ export default {
       dialogFormVisible: false,
       tableData: [],
       sizeForm: {},
+      coachList:[],
+      managerList:[],
       dialogVisible: false,
       dialogVisible2: false,
       /*分页*/
@@ -268,6 +306,9 @@ export default {
     totalCourse().then(res => {
       this.total = res.data.dataTotal
     })
+
+    this.getAllCoach()
+    this.getAllManager()
   },
   methods: {
     onSubmit() {
@@ -325,6 +366,7 @@ export default {
         coursePrice:this.sizeForm.coursePrice,
         courseDesc:this.sizeForm.courseDesc
       }).then(res => {
+        console.log(res.data);
         if (res.data.code === 200) {
           //刷新表格
           getAllCourse({
@@ -374,13 +416,7 @@ export default {
       });
     },
     updateCourse() {
-      updateCourse({
-        courseNo: this.sizeForm.courseNo,
-        courseName: this.sizeForm.courseName,
-        courseTime: this.sizeForm.courseTime,
-        courseDuration: this.sizeForm.courseDuration,
-        employeeName: this.sizeForm.employeeNo,
-      }).then(res => {
+      updateCourse(this.sizeForm).then(res => {
         if (res.data.code === 200) {
           //刷新表格
           getAllCourse({
@@ -418,6 +454,17 @@ export default {
             console.log(err.message)
           })
 
+    },
+    // 获取所有教练
+    getAllCoach() {
+      getAllCoach().then(res=>{
+        this.coachList = res.data
+      })
+    },
+    getAllManager() {
+      getAllManager().then(res=>{
+        this.managerList = res.data
+      })
     },
     //获取数据方法
     getAllCourse() {

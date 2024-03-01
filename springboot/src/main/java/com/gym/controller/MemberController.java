@@ -27,104 +27,179 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    /**
+     * 获取所有会员信息
+     * @param page 页码
+     * @param size 每页显示的数量
+     * @return 会员信息
+     */
     @RequestMapping(path="/getAllMember")
     public List<Member> getAllMember(int page,int size){
         return memberService.getMemberMapper(page,size);
     }
 
+    /**
+     * 新增会员
+     * @param member 会员表单
+     * @return map
+     */
     @RequestMapping(path = "/addMember")
     public Map<String,Object> addMember(Member member) {
         return memberService.addMember(member);
     }
 
+    /**
+     * 删除用户
+     * @param memberNo 用户编号
+     * @return map
+     */
     @RequestMapping(path="/deleteMember")
     public Map<String,Object> deleteMember(int memberNo) {
         return memberService.deleteMember(memberNo);
     }
 
 
+    /**
+     * 更新用户
+     * @param member 会员表单
+     * @return map
+     */
     @RequestMapping(path="/updateMember")
     public Map<String,Object> updateMember(Member member) {
         return memberService.updateMember(member);
     }
 
+    /**
+     * 通过会员编号更新会员
+     * @param member
+     * @return
+     */
     @RequestMapping(path="/updateMemberByMemberNo")
     public Map<String,Object> updateMemberByMemberNo(Member member) {
         return memberService.updateMemberByMemberNo(member);
     }
 
+    /**
+     * 查找会员表数据总条数
+     * @return dataTotal
+     */
     @RequestMapping(path = "/totalMember")
     public Common totalMember() {
         return memberService.totalMember();
     }
 
-
+    /**
+     * 登录
+     * @param memberPhone 手机号
+     * @param memberPassword 密码
+     * @return
+     */
     @RequestMapping(path="/getMemberPassword")
     @CrossOrigin
     public Map<String,Object> getMemberPassword(String memberPhone,String memberPassword){
         return memberService.getMemberPassword(memberPhone,memberPassword);
     }
 
-
+    /**
+     * 模糊查询用户
+     * @param keyWord 关键词
+     * @param page 页码
+     * @param size 每页显示的数量
+     * @return 会员列表
+     */
     @RequestMapping(path = "/getByKeywordMember")
         public List<Member> getByKeywordMember(String keyWord,int page,int size){
             return memberService.getByKeywordMember(keyWord,page,size);
     }
 
+    /**
+     * 模糊查询用户总数
+     * @param keyWord 关键词
+     * @return
+     */
     @RequestMapping(path = "/totalMemberFuzzy")
     public Common totalMemberFuzzy(String keyWord) {
         return memberService.totalMemberFuzzy(keyWord);
     }
 
+    /**
+     * 获取会员积分
+     */
     @RequestMapping(path = "/getMemberIntegral")
     public double getMemberIntegral(int memberNo) {
         return memberService.getMemberIntegral(memberNo);
     }
 
+    /**
+     * 获取会员余额
+     */
     @ResponseBody
     @RequestMapping(path = "/getMemberChange")
     public double getMemberChange(int memberNo) {
         return memberService.getMemberChange(memberNo);
     }
 
+    /**
+     * 通过会员编号获取用户信息
+     */
     @RequestMapping(path = "/getMemberByMemberNo")
     public Member getMemberByMemberNo(Integer memberNo) {
         return memberService.getMemberByMemberNo(memberNo);
     }
 
+    /**
+     * 获取会员充值总额
+     */
     @RequestMapping(path = "/getTotalMoney")
     public Double getTotalMoney(Integer memberNo) {
         return memberService.getTotalMoney(memberNo);
     }
 
+    /**
+     * 获取会员权限
+     */
     @RequestMapping(path = "/getMemberPower")
     public double getMemberPower(Integer memberNo) {
         return memberService.getMemberPower(memberNo);
     }
 
-
+    /**
+     * 更新会员额度
+     */
     @RequestMapping(path = "/updateMemberChange")
     public double updateMemberChange(Integer memberNo) {
         return memberService.updateMemberChange(memberNo);
     }
 
+    /**
+     * 更新会员积分
+     */
     @RequestMapping(path = "/updateMemberIntegral")
-    public double updateMemberIntegral(Double price,Integer memberNo) {
+    public Map<String,Object> updateMemberIntegral(Double price,Integer memberNo) {
         return memberService.updateMemberIntegral(price,memberNo);
     }
 
+    /**
+     * 更新会员余额
+     */
     @RequestMapping(path = "/updateMemberChangeByMemberNo")
-    public double updateMemberChangeByMemberNo(int memberNo,double coursePrice) {
+    public Map<String,Object> updateMemberChangeByMemberNo(int memberNo,double coursePrice) {
         return memberService.updateMemberChangeByMemberNo(memberNo,coursePrice);
     }
 
+    /**
+     * 修改会员密码
+     */
     @RequestMapping(path = "/updateMemberPassword")
     public Map<String,Object> updateMemberPassword(String memberPhone,String memberPassword) {
         return memberService.updateMemberPassword(memberPhone,memberPassword);
     }
 
+    /**
+     * 修改会员权限
+     */
     @RequestMapping(path = "/updateMemberPower")
-    public  Map<String,Object> updateMemberPower(int memberPower,int memberNo) {
+    public Map<String,Object> updateMemberPower(int memberPower,int memberNo) {
         return memberService.updateMemberPower(memberPower,memberNo);
     }
 
@@ -136,22 +211,7 @@ public class MemberController {
         // 从数据库查询出所有的数据
         List<Member> list = memberService.getAllMemberNoPage();
         // 通过工具类创建writer 写出到磁盘路径
-//        ExcelWriter writer = ExcelUtil.getWriter(filesUploadPath + "/用户信息.xlsx");
-        // 在内存操作，写出到浏览器
         ExcelWriter writer = ExcelUtil.getWriter(true);
-        //自定义标题别名
-        /*writer.addHeaderAlias("memberNo", "用户编号");
-        writer.addHeaderAlias("memberUsername", "用户名");
-        writer.addHeaderAlias("memberName", "姓名");
-        writer.addHeaderAlias("memberAge", "年龄");
-        writer.addHeaderAlias("memberGender", "性别");
-        writer.addHeaderAlias("memberPhone", "电话");
-        writer.addHeaderAlias("memberHeight", "身高");
-        writer.addHeaderAlias("memberWeight", "体重");
-        writer.addHeaderAlias("cardTime", "开卡时间");
-        writer.addHeaderAlias("cardClass", "购买课时");
-        writer.addHeaderAlias("cardNextClass", "剩余课时");
-        writer.addHeaderAlias("memberPassword", "用户密码");*/
 
         // 一次性写出list内的对象到excel，使用默认样式，强制输出标题
         writer.write(list, true);
@@ -179,31 +239,6 @@ public class MemberController {
     public Map<String, Object> imp(MultipartFile file) throws Exception {
         InputStream inputStream = file.getInputStream();
         ExcelReader reader = ExcelUtil.getReader(inputStream);
-        // 方式1：(推荐) 通过 javabean的方式读取Excel内的对象，但是要求表头必须是英文，跟javabean的属性要对应起来
-//        List<User> list = reader.readAll(User.class);
-
-        // 方式2：忽略表头的中文，直接读取表的内容 但是是手动的不推荐
-        // List<List<Object>> list = reader.read(1);
-        // List<User> users = CollUtil.newArrayList();
-        // for (List<Object> row : list) {
-        //     User user = new User();
-        //     user.setUsername(row.get(0).toString());
-        //     user.setPassword(row.get(1).toString());
-        //     user.setNickname(row.get(2).toString());
-        //     user.setEmail(row.get(3).toString());
-        //     user.setPhone(row.get(4).toString());
-        //     user.setAddress(row.get(5).toString());
-        //     user.setAvatarUrl(row.get(6).toString());
-        //     users.add(user);
-        // }
-        /*HashMap<String, String> headerAlias = new HashMap<>(6);
-        headerAlias.put("用户名", "username");
-        headerAlias.put("昵称", "nickname");
-        headerAlias.put("邮箱", "email");
-        headerAlias.put("电话", "phone");
-        headerAlias.put("地址", "address");
-        headerAlias.put("头像", "avatarUrl");
-        reader.setHeaderAlias(headerAlias);*/
 
         List<Member> list = reader.readAll(Member.class);
 

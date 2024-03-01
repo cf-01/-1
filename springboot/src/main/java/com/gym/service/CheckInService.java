@@ -3,6 +3,7 @@ package com.gym.service;
 
 import com.gym.entity.CheckIn;
 import com.gym.mapper.CheckInMapper;
+import com.gym.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

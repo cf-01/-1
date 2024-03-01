@@ -1,5 +1,13 @@
 <template>
   <div class="allCourse">
+
+    <div class="search">
+            <el-input placeholder="请输入内容" v-model="KeywordCourse" class="input-with-select" size="mini">
+              <el-button slot="append" icon="el-icon-search" size="mini"
+                         @click="getByKeyword(KeywordCourse)"></el-button>
+            </el-input>
+    </div>
+
     <el-table
         :data="tableData"
         height="520px"
@@ -30,7 +38,7 @@
               <el-form-item label="课程积分">
                 <span>{{ props.row.courseIntegral }}</span>
               </el-form-item>
-              <el-form-item label="课程描述">
+              <el-form-item label="课程分类">
                 <span>{{ props.row.courseDesc }}</span>
               </el-form-item>
             </el-form>
@@ -38,26 +46,26 @@
 
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
           label="课程编号"
           prop="courseNo">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
           label="课程名称"
           prop="courseName">
       </el-table-column>
       <el-table-column
-          label="课程描述"
+          label="课程分类"
           prop="courseDesc">
       </el-table-column>
       <el-table-column
           label="原价"
           prop="coursePrice">
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
             label="优惠价"
             prop="discountPrice">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
           label="操作"
           prop="courseDesc">
@@ -76,6 +84,8 @@ import {
   getAllCourse,
   getAllRegister,
   getMemberPower,
+  getByKeywordCourse,
+  totalCourseFuzzy,
   totalCourse,
   updateMemberChangeByMemberNo, updateMemberIntegral
 } from "@/api/allApi";
@@ -88,6 +98,11 @@ export default {
       admin:{
 
       },
+      KeywordCourse: '',
+      pageSize: 10,
+      currentPage: 1,
+      total: 0,
+      searchValue: '',
       memberPower:'',
       coursePrice:'',
     }
@@ -136,6 +151,23 @@ export default {
       }).catch(err=>{
         console.log(err.message)
       })
+
+    },
+    getByKeyword(KeywordCourse) {
+      totalCourseFuzzy({
+        keyWord: KeywordCourse
+      }).then(res => {
+        this.total = res.data.dataTotal
+      }),
+          getByKeywordCourse({
+            keyWord: KeywordCourse,
+            page: 0,
+            size: 10
+          }).then(res => {
+            this.tableData = res.data
+          }).catch(err => {
+            console.log(err.message)
+          })
 
     },
     getMemberPower(){

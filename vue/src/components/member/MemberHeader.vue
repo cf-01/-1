@@ -1,7 +1,7 @@
 <template>
   <div class="memberHeader">
     <div style="width: 200px; padding-left: 30px;font-weight: bold;color:#309975;" >
-      健身房系统
+      健身房信息管理系统
     </div>
     <div style="flex: 1"></div>
     <div style="width: 100px">

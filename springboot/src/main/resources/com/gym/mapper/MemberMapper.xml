@@ -94,7 +94,7 @@
 
     <!--积分购买会员-->
     <update id="updateMemberIntegral">
-        UPDATE member SET memberIntegral =  (memberIntegral - #{price}) WHERE memberNo = #{memberNo}
+        UPDATE member SET memberIntegral =  (memberIntegral - #{price}) WHERE memberNo = #{memberNo} and (memberIntegral - #{price}) > 0
     </update>
 
     <!--修改用户vip权限-->
@@ -126,7 +126,7 @@
     </update>
 
     <update id="updateMemberChangeByMemberNo">
-        UPDATE member SET memberChange =  (memberChange - #{coursePrice}) WHERE memberNo = #{memberNo}
+        UPDATE member SET memberChange =  (memberChange - #{coursePrice}) WHERE memberNo = #{memberNo} and (memberChange - #{coursePrice}) >0
     </update>
 
     <!--根据用户编号获得积分-->

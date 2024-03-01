@@ -83,6 +83,13 @@ public class EmployeeService {
         return employeeMapper.totalEmployeeFuzzy(keyWord);
     }
 
+    public List<Employee> getAllCoach() {
+        return employeeMapper.getAllCoach();
+    }
+
+    public List<Employee> getAllManager() {
+        return employeeMapper.getAllManager();
+    }
 }
 
 

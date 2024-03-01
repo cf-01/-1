@@ -128,4 +128,8 @@ public class RegisterService {
         return registerMapper.totalRegisterFuzzy(keyWord);
     }
 
+//    //柱状图--课程种类接口
+//    public List<Register> getAllCourseDuration(int courseDuration){
+//        return registerMapper.getAllCourseDuration(courseDuration);
+//    }
 }

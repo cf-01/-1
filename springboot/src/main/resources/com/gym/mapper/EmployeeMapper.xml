@@ -58,4 +58,15 @@
         select COUNT(*) as dataTotal from employee where employeeJob like concat('%',#{keyWord},'%') or employeeName like concat('%',#{keyWord},'%') ;
     </select>
 
+    <!--查找所有教练信息-->
+    <select id="getAllCoach" resultMap="EmployeeResultMap" resultType="com.gym.entity.Employee">
+        select * from employee where employeeJob = 1
+    </select>
+
+    <!--查找所有经理信息-->
+    <select id="getAllManager" resultMap="EmployeeResultMap" resultType="com.gym.entity.Employee">
+        select * from employee where employeeJob = 4
+    </select>
+
+
 </mapper>

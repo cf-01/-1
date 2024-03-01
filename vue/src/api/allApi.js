@@ -219,6 +219,28 @@ export const getByKeywordEquipment = params =>{
     })
 }
 
+
+// 查询所有教练
+export const getAllCoach = params =>{
+    return request({
+        url:'/getAllCoach',
+        method:'get',
+        params:params
+    })
+}
+
+
+
+// 查询所有经理
+export const getAllManager = params =>{
+    return request({
+        url:'/getAllManager',
+        method:'get',
+        params:params
+    })
+}
+
+
 // 模糊查询查找员工表数据总条数
 export const totalEquipmentFuzzy = params =>{
     return request({
@@ -273,7 +295,7 @@ export const updateCourse = params =>{
     return request({
         url:'/updateCourse',
         method:'post',
-        params:params
+        data:params
     })
 }
 

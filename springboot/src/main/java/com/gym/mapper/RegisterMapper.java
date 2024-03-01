@@ -33,4 +33,7 @@ public interface RegisterMapper {
     Register checkRegister(int courseNo ,int memberNo);
 
     Double getTotalBuyByMemberNo(int memberNo);
+
+//    //柱状图--课程种类接口
+//    List<Register> getAllCourseDuration(int courseDuration);
 }

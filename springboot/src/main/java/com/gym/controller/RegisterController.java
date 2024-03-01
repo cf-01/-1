@@ -55,5 +55,12 @@ public class RegisterController {
     public Common totalRegisterFuzzy(String keyWord) {
         return registerService.totalRegisterFuzzy(keyWord);
     }
+
+//    //柱状图--课程种类接口
+//    @RequestMapping(path ="getAllCourseDuration" )
+//    public List<Register> getAllCourseDuration(int courseDuration){
+//        return registerService.getAllCourseDuration(courseDuration);
+//    }
+
 }
 

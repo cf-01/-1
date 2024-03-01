@@ -1,7 +1,7 @@
 <template>
   <div class="addMember">
     <el-card  shadow="hover">
-      <el-page-header @back="goBack" content="新增用户"style="margin: 20px">
+      <el-page-header @back="goBack" content="新增用户" style="margin: 20px">
       </el-page-header>
       <div class="box-card bgc">
       <div class="text item">

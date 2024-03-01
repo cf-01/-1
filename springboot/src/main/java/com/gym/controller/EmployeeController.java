@@ -6,6 +6,7 @@ import com.gym.entity.Employee;
 
 import com.gym.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,5 +53,9 @@ public class EmployeeController {
         return employeeService.totalEmployeeFuzzy(keyWord);
     }
 
+    @GetMapping("/getAllCoach")
+    public List<Employee> getAllCoach() {
+        return employeeService.getAllCoach();
+    }
 }
 
