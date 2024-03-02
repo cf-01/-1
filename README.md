@@ -8,7 +8,7 @@
 >
 > 另外，如果对您有帮助，请帮我点个小星星，这将对我帮助很大，感谢！
 >
-> **注意**：sql文件在doc目录下，mysql8建议使用gym_mysql.sql导入。如果你是mysql5，可以使用 gym_mysql5.sql 导入。
+> **注意**：sql文件在doc目录下，mysql8建议使用gym_management.sql导入。如果你是mysql5，可以使用适配5的sql文件 gym_mysql5.sql 导入。
 > 
 > **会员登录部分是通过手机号登录的，很多朋友这里遇到了问题**
 > 
