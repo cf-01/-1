@@ -20,7 +20,6 @@ import BuyRecord from "@/views/member/BuyRecord";
 import axios from "axios";
 import Error from "@/components/Error";
 import AllCourse from "@/views/member/allCourse";
-import Echarts from "@/views/admin/Echarts";
 
 Vue.use(VueRouter)
 // 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
@@ -76,12 +75,7 @@ const routes = [
         path:'registerManage',
         name:'RegisterManage',
         component:RegisterManage
-      },
-      {
-        path:'echarts',
-        name:'Echarts',
-        component:Echarts
-      },
+      }
     ]
   },
   {

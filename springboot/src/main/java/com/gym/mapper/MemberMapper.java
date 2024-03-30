@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -58,5 +60,8 @@ public interface MemberMapper {
      int updateMemberChangeByMemberNo(int memberNo,double coursePrice);
 
 
+     Integer getMemberBySeason(Date startTime, Date endTime);
+
+    Integer getSexByYear(String sex, Integer year);
 
 }

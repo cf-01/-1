@@ -1,24 +1,18 @@
 package com.gym.service;
 
-import cn.hutool.core.util.IdUtil;
-import com.gym.entity.Admin;
+
 import com.gym.entity.Common;
 import com.gym.entity.Member;
 import com.gym.mapper.MemberMapper;
 import com.gym.mapper.RegisterMapper;
 import com.gym.utils.JwtUtil;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.session.ExecutorType;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.ZoneId;
+import java.util.*;
 
 @Service
 public class MemberService {
@@ -255,4 +249,67 @@ public class MemberService {
         return resultMap;
     }
 
+    public Map<String, Object> getMemberBySeason(Integer year) {
+        // 判空
+        if (year == null) {
+            year = LocalDate.now().getYear();
+        }
+        Map<String, Object> resultMap = new HashMap<>();
+        ArrayList<String> season = new ArrayList<>();
+        ArrayList<Integer> count = new ArrayList<>();
+        int currentYear = year;
+
+        String[] quarterNames = {"一季度", "二季度", "三季度", "四季度"};
+        for (int i = 1; i <= 4; i++) {
+            int startMonth = (i - 1) * 3 + 1; // 计算季度起始月份
+            int endMonth = Math.min(startMonth + 2, 12); // 防止结束月份超出12月
+
+            // 开始时间
+            LocalDateTime s = LocalDateTime.of(currentYear, startMonth, 1, 0, 0, 0);
+            Date startTime = Date.from(s.atZone(ZoneId.systemDefault()).toInstant());
+
+            // 结束时间
+            LocalDateTime e;
+            if (i == 4 && endMonth == 12) { // 如果是最后一个季度且结束月份为12月，结束时间为本年度最后一天
+                e = LocalDateTime.of(currentYear, 12, 31, 23, 59, 59);
+            } else { // 否则，为下一季度开始前一日
+                e = LocalDateTime.of(currentYear, endMonth + 1, 1, 0, 0, 0).minusDays(1);
+            }
+            Date endTime = Date.from(e.atZone(ZoneId.systemDefault()).toInstant());
+
+            Integer memberBySeason = memberMapper.getMemberBySeason(startTime, endTime);
+            season.add(quarterNames[i - 1]);
+            count.add(memberBySeason);
+        }
+        resultMap.put("season", season);
+        resultMap.put("count", count);
+        resultMap.put("code", 200);
+        resultMap.put("message", "成功");
+        return resultMap;
+    }
+
+    public Map<String, Object> getMemberSexByYear(Integer year) {
+        // 判空
+        if (year == null) {
+            year = LocalDate.now().getYear();
+        }
+        Map<String, Object> resultMap = new HashMap<>();
+        List<Map<String,Object>> sexCount = new ArrayList<>();
+        Map<String, Object> mMap = new HashMap<>();
+        // 获取该年男性人数
+        Integer m = memberMapper.getSexByYear("M",year);
+        mMap.put("value", m);
+        mMap.put("name", "男");
+        sexCount.add(mMap);
+        // 获取该年女性人数
+        Map<String, Object> fMap = new HashMap<>();
+        Integer f = memberMapper.getSexByYear("F",year);
+        fMap.put("value", f);
+        fMap.put("name", "女");
+        sexCount.add(fMap);
+        resultMap.put("sexCount", sexCount);
+        resultMap.put("code", 200);
+        resultMap.put("message", "成功");
+        return resultMap;
+    }
 }

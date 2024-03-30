@@ -519,4 +519,24 @@ export const updateMemberChangeByMemberNo = params =>{
 }
 
 
+// 获取季度会员数量
+export const getMemberBySeason = params =>{
+    return request({
+        url:'/echarts/getMemberBySeason',
+        method:'get',
+        params:params
+    })
+}
+
+
+// 获取年度男女人数
+export const getMemberSexByYear = params =>{
+    return request({
+        url:'/echarts/getMemberSexByYear',
+        method:'get',
+        params:params
+    })
+}
+
+
 

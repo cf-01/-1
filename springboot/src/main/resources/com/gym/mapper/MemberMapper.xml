@@ -154,5 +154,15 @@
         select SUM(rechargeMoney) from recharge where memberNo = #{memberNo}
     </select>
 
+    <select id="getMemberBySeason" resultType="java.lang.Integer">
+        select count(*) from member where cardTime &gt;= #{startTime} and cardTime &lt;=  #{endTime}
+    </select>
+    <select id="getSexByYear" resultType="java.lang.Integer">
+        select count(*) from member where
+        memberGender = #{sex}
+        and cardTime &gt; DATE_FORMAT(CONCAT(#{year}, '-01-01'), '%Y-%m-%d')
+        and cardTime &lt; DATE_FORMAT(CONCAT(#{year}, '-12-31'), '%Y-%m-%d')
+    </select>
+
 
 </mapper>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <el-card  shadow="hover">
+    <el-card shadow="hover">
       <div class="header">
         <div class="page-header">
           <el-page-header @back="goBack" content="主页">
@@ -8,55 +8,131 @@
         </div>
       </div>
 
-      <div class="chart">
-
+      <div style="display: flex;justify-content: left;align-items:center; padding: 20px;">
+        <div>
+          请选择年份：
+        </div>
+        <div class="block">
+          <el-date-picker
+              v-model="year"
+              type="year"
+              size="mini"
+              placeholder="选择年"
+              :picker-options="pickerOptions"
+              @change="getYear">
+          </el-date-picker>
+        </div>
       </div>
 
 
+      <div class="welcome-echarts">
+        <div id="histogram" style="width: 50%;height: 400px; background-color:#fff;">
+
+        </div>
+
+        <div id="pie" style="width: 40%;height: 400px; background-color:#fff;">
+
+        </div>
+
+      </div>
     </el-card>
   </div>
 </template>
 
 <script>
+import * as echarts from 'echarts'
+import {getMemberBySeason,getMemberSexByYear} from '@/api/allApi'
 
 export default {
   name: "Index",
   data() {
-    return{
-      Keyword:'',
+    return {
+      Keyword: '',
+      season: [],
+      count: [],
+      year: '',
+      yearNum:2023,
+      pickerOptions: {
+        disabledDate(time) {
+          return time.getFullYear() > new Date().getFullYear();
+        }
+      }
     }
   },
   mounted() {
-    this.drawLine()
+    this.drawHistogram()
+    this.drawPieCharts()
   },
-  methods:{
+  methods: {
     goBack() {
       this.$router.back();
     },
-    drawLine() {
-      // 初始化echarts实例
-      const myChart = this.$echarts.init(document.getElementById('myChart'))
-      // 绘制图表
-      myChart.setOption({
-        // 标题
-        title: { text: '课程销量' },
-        // 提示框组件
-        tooltip: {},
-        // x轴
-        xAxis: {
-          data: ['有氧燃脂类', '塑形类', '放松类', '舞蹈类']
+    getYear() {
+      // 将年份转成数字年
+      this.yearNum = this.year.getFullYear();
+      this.drawHistogram()
+      this.drawPieCharts()
+    },
+    drawPieCharts() {
+      //饼图
+      const pie = document.getElementById('pie');
+      const pieChart = echarts.init(pie);
+      const option = {
+        title: {
+          text: this.yearNum + '年会员性别比例',
+          left: 'center'
         },
-        // y轴
-        yAxis: {},
-        // 系列，用于管理数据
-        series: [{
-          // 图例的名字
-          name: '销量',
-          // 图像类型
-          type: 'bar',
-          // 数值
-          data: [5, 20, 36, 10, 10, 20]
-        }]
+        tooltip: {
+          trigger: 'item'
+        },
+        legend: {
+          orient: 'vertical',
+          left: 'left',
+        },
+        series: [
+          {
+            name: '性别',
+            type: 'pie',
+            radius: '50%',
+            data: []
+          }
+        ]
+      };
+      getMemberSexByYear({year:this.yearNum}).then(res => {
+        option.series[0].data = res.data.sexCount
+        pieChart.setOption(option);
+      })
+    },
+    drawHistogram() {
+      //柱状图
+      const histogram = document.getElementById('histogram');
+      const histogramChart = echarts.init(histogram);
+      const option = {
+        xAxis: {
+          name: '季度',
+          type: 'category',
+          data: []
+        },
+        yAxis: {
+          name: this.yearNum + '年各季度开卡数',
+        },
+        series: [
+          {
+            data: [],
+            type: 'bar',
+            itemStyle: {
+              color: function(params) {
+                const colors = ['#c23531', '#2f4554', '#61a0a8', '#d48265',];   // 自定义颜色数组
+                return colors[params.dataIndex];   // params.dataIndex表示当前柱子在数据数组中的索引值
+              }
+            },
+          }
+        ]
+      };
+      getMemberBySeason({year: this.yearNum}).then(res => {
+        option.xAxis.data = res.data.season
+        option.series[0].data = res.data.count
+        histogramChart.setOption(option);
       })
     }
   },
@@ -94,7 +170,7 @@ export default {
 
 .chart .chart-top {
   height: 200px;
-  padding:17px;
+  padding: 17px;
 }
 
 .top-card {
@@ -125,9 +201,14 @@ export default {
 }
 
 
-.search-input input{
+.search-input input {
   width: 110px;
 }
 
+.welcome-echarts {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
 
 </style>
